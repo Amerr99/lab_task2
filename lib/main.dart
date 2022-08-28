@@ -1,22 +1,43 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Home());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Home();
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+Color myColor=Colors.white;
+String image1="images/10.jfif";
+String image2="images/11.jfif";
+class _HomeState extends State<Home> {
+
+  @override
+  Widget build(BuildContext context) {
+     return MaterialApp(
         title: 'Flutter Demo',
         home: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.amber,
           ),
-          body: ListView(
+          body:Container(
+            color: myColor,
+                child:
+          
+           ListView(
+
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +53,7 @@ class MyApp extends StatelessWidget {
                   Container(
                     height: 100,
                     width: 100,
-                    child: Image(image: AssetImage("images/10.jfif"),fit: BoxFit.fill,),
+                    child: Image(image: AssetImage("$image1"),fit: BoxFit.fill,),
                   ),
                   Column(
                     children: [
@@ -66,6 +87,15 @@ class MyApp extends StatelessWidget {
                       ),
                     ],
                   ),
+                MaterialButton(
+                  child: Text("change"),
+                  color: Colors.purple,
+                  onPressed: () {
+                  setState(() {
+                    image1="images/1.jfif";
+                  });
+                },
+                )
                 ],
               ),
               Row(
@@ -113,8 +143,17 @@ class MyApp extends StatelessWidget {
                   Container(
                     height: 100,
                     width: 100,
-                    child: Image(image: AssetImage("images/11.jfif"),fit: BoxFit.fill,),
+                    child: Image(image: AssetImage("$image2"),fit: BoxFit.fill,),
                   ),
+                 MaterialButton(
+                  child: Text("change"),
+                  color: Colors.purple,
+                  onPressed: () {
+                  setState(() {
+                    image2="images/2.jfif";
+                  });
+                },
+                )
                 ],
               ),
               Row(
@@ -240,6 +279,18 @@ class MyApp extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: Colors.red,
                     ),
+                     child: MaterialButton(onPressed: (() {
+                        setState((){
+                          myColor=Colors.red;
+
+
+
+                        });
+
+
+                        
+                      }),
+                  )
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(0, 40, 5, 0),
@@ -248,7 +299,20 @@ class MyApp extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.green,
+
                     ),
+                     child: MaterialButton(onPressed: (() {
+                        setState((){
+                          myColor=Colors.green;
+
+
+
+                        });
+
+
+                        
+                      }),
+                  )
                   ),
                   Container(
                     margin: EdgeInsets.fromLTRB(0, 40, 5, 0),
@@ -256,22 +320,44 @@ class MyApp extends StatelessWidget {
                     height: 20,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.blue,
+                      color: Colors.blue,),
+                       child: MaterialButton(onPressed: (() {
+                        setState((){
+                          myColor=Colors.blue;
+
+
+
+                        });
+
+
+                        
+                      }),
+                  )
                     ),
-                  ),
                   Container(
                     margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
                     width: 20,
                     height: 20,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: Colors.yellow,
-                    ),
-                  ),
+                      color: Colors.yellow,),
+                      child: MaterialButton(onPressed: (() {
+                        setState((){
+                          myColor=Colors.yellow;
+
+
+
+                        });
+
+
+                        
+                      }),
+                  ),),
                 ],
               )
             ],
-          ),
+          ),),
         ));
   }
 }
+
